@@ -40,11 +40,10 @@ def index():
         full_filename = 'uploads/'+ name
 
         # Extracting text from image
-        custom_config = r'-l eng -- oem 3 --psm 6'
-        text = pytesseract.image_to_string(image, config=custom_config)
+        text = pytesseract.image_to_string(image, lang='eng')
 
         #Remove symbol if any
-        characters_to_remove = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+        characters_to_remove = "!—*“>+-/|£#%$^_~"
         new_string = text
         for character in characters_to_remove:
             new_string = new_string.replace(character, "")
